@@ -1,0 +1,11 @@
+<h1>this is index route</h1>
+
+
+<% blogs.forEach(function(blog){ %>
+        <div>
+            <h2><%= blog.title %> </h2>
+            <h2><%= blog.description %> </h2>
+            <img src="<%= blog.image %> " alt="">
+            <span><h2><%= blog.created %> </h2></span>
+        </div>
+        <% }) %> 
