@@ -17,7 +17,7 @@ app.use(express.static("public"));
 var blogSchema= new mongoose.Schema({
     title: String,
     image: String,
-    description: String,
+    body: String,
     created: {type: Date, default:Date.now}
 });
 var Blog = mongoose.model("Blog", blogSchema)
@@ -26,6 +26,8 @@ var Blog = mongoose.model("Blog", blogSchema)
 app.get("/", function(req, res){
     res.redirect("/blogs");
 })
+
+//index
 app.get("/blogs", function(req, res){
     Blog.find({}, function(err, blogs){
         if(err){
@@ -35,6 +37,24 @@ app.get("/blogs", function(req, res){
         }
     }) 
 });
+
+//new
+app.get("/blogs/new", function(req, res){
+    res.render("new");
+})
+
+//create
+app.post("/blogs", function(req, res){
+    Blog.create(req.body.blog, function(err, newBlog){
+        if(err){
+            res.render("new");
+        }else{
+            res.redirect("/blogs");
+        }
+
+    })
+
+})
 
 
 const port = 3000;
