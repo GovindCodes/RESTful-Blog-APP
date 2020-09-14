@@ -6,9 +6,11 @@
 <% blogs.forEach(function(blog){ %>
         <div>
             <h2><%= blog.title %> </h2>
-            <h2><%= blog.body %> </h2>
             <img src="<%= blog.image %> " alt="">
-            <span><h2><%= blog.created %> </h2></span>
+            <span><%= blog.created %></span>
+            <p><%= blog.body.substring(0, 100) %>... </p>
+            
+            <a href="/blogs/<%= blog._id %> ">Read more</a>
         </div>
         <% }) %> 
 
